@@ -1,0 +1,12 @@
+INFORMATION: (15:32:17)  Starting database import in project 'FTVMCP_SANDBOX'.
+INFORMATION: All import file entries will be created or updated.
+INFORMATION: (15:32:17)  Finished Pre-Import Phase.
+ERROR: Cannot write tag 'E2E\DevPV'.
+Initial value is invalid.
+
+Cause: Value is too small to represent.  The smallest possible values between 0 and ?1.0 are ?1.175494351E-38.
+INFORMATION: Tag Import file 'C:\x\E2E-Tags.CSV' has 5 entries.
+INFORMATION: Folders - Successful Creations  1
+INFORMATION: Tags - Successful Creations     3
+INFORMATION: Tags - Import Failures          1
+INFORMATION: (15:32:19)  Database import complete.

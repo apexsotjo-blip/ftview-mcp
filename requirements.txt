@@ -1,0 +1,5 @@
+fastmcp>=3.2
+lxml>=5
+pywinauto>=0.6.9   # View Studio automation (studio.py / e2e.py) only
+pywin32>=306       # headless live tools (headless.py)
+olefile>=0.46      # headless live tools (headless.py)

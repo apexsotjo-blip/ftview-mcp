@@ -1,0 +1,73 @@
+{
+  "name": "EQUALIZATION",
+  "size": [1920, 1080],
+  "shortcut": "PLC",
+  "header": {"title": "Equalization Tanks (example)"},
+  "nav": {"displays": [
+    {"display": "EQUALIZATION"},
+    {"display": "OVERVIEW"}, {"display": "TREATMENT"}, {"display": "DOSING"},
+    {"display": "SETPOINTS"}, {"display": "ALARMS"}, {"display": "MOTORS"}
+  ]},
+  "objects": [
+    {"type": "panel", "id": "PnlEq", "x": 300, "y": 70, "w": 900, "h": 620, "title": "EQUALIZATION TANKS"},
+    {"type": "panel", "id": "PnlInst", "x": 1240, "y": 70, "w": 420, "h": 620, "title": "INLET INSTRUMENTS"},
+
+    {"type": "label", "id": "Inlet", "x": 40, "y": 222, "text": "Inlet", "w": 160, "bold": true},
+
+    {"type": "tank", "id": "TK101", "x": 420, "y": 140, "w": 170, "h": 300, "label": "TK-101",
+     "tags": {"level": "TK101_LEVEL", "hi": "TK101_LEVEL_HI", "lo": "TK101_LEVEL_LO"},
+     "range": [0, 100], "units": "%"},
+    {"type": "tank", "id": "TK102", "x": 800, "y": 140, "w": 170, "h": 300, "label": "TK-102",
+     "tags": {"level": "TK102_LEVEL", "hi": "TK102_LEVEL_HI", "lo": "TK102_LEVEL_LO"},
+     "range": [0, 100], "units": "%"},
+
+    {"type": "mixer", "id": "MX101", "x": 535, "y": 96, "label": "MX-101", "shaft": 290,
+     "tags": {"run": "MX101_RUN", "fault": "MX101_FAULT"}},
+    {"type": "mixer", "id": "MX102", "x": 915, "y": 96, "label": "MX-102", "shaft": 290,
+     "tags": {"run": "MX102_RUN", "fault": "MX102_FAULT"}},
+
+    {"type": "pump", "id": "P101A", "x": 640, "y": 500, "label": "P-101A",
+     "tags": {"run": "P101A_RUN", "fault": "P101A_FAULT"},
+     "faceplate": {"display": "FP_MOTOR", "tags": ["P101A_RUN", "P101A_FAULT", "P101A_CMD"]}},
+    {"type": "pump", "id": "P101B", "x": 640, "y": 590, "label": "P-101B",
+     "tags": {"run": "P101B_RUN", "fault": "P101B_FAULT"},
+     "faceplate": {"display": "FP_MOTOR", "tags": ["P101B_RUN", "P101B_FAULT", "P101B_CMD"]}},
+    {"type": "status", "id": "P101AState", "x": 700, "y": 518, "w": 80,
+     "states": [{"when": "P101A_FAULT", "text": "FAULT", "color": "#E00000"},
+                {"when": "P101A_RUN", "text": "RUNNING"}], "default": {"text": "STOPPED"}},
+    {"type": "status", "id": "P101BState", "x": 700, "y": 608, "w": 80,
+     "states": [{"when": "P101B_FAULT", "text": "FAULT", "color": "#E00000"},
+                {"when": "P101B_RUN", "text": "RUNNING"}], "default": {"text": "STOPPED"}},
+
+    {"type": "valve", "id": "XV101", "x": 1060, "y": 495, "label": "To treatment"},
+
+    {"type": "pipe", "id": "LIn", "points": [[40, 250], [420, 250]], "arrow": true},
+    {"type": "pipe", "id": "LTk", "from": "TK101.right@0.85", "to": "TK102.left@0.85"},
+    {"type": "pipe", "id": "LSuc", "points": [[885, 440], [885, 470], [580, 470], [580, 520], [640, 520]]},
+    {"type": "pipe", "id": "LSucB", "points": [[580, 520], [580, 610], [640, 610]]},
+    {"type": "pipe", "id": "LDisA", "from": "P101A.out", "to": "XV101.in"},
+    {"type": "pipe", "id": "LDisB", "points": [[686, 595], [790, 595], [790, 505]]},
+    {"type": "pipe", "id": "LOut", "points": [[1090, 505], [1180, 505]], "arrow": true},
+
+    {"type": "analog", "id": "FIT101", "x": 1270, "y": 110, "tag": "FIT101_FLOW", "label": "FIT-101  Inlet flow",
+     "units": "m3/h", "w": 220, "alarm": "FIT101_FLOW_HI", "bar": {"min": 0, "max": 100, "lo": 10, "hi": 80}},
+    {"type": "analog", "id": "FQ101", "x": 1270, "y": 190, "tag": "FQ101_TOTAL", "label": "FQ-101  Totalizer",
+     "units": "m3", "w": 220, "decimals": 0},
+    {"type": "analog", "id": "AIT101", "x": 1270, "y": 250, "tag": "AIT101_PH", "label": "AIT-101  Inlet pH",
+     "units": "pH", "w": 220, "decimals": 2, "alarm": "AIT101_PH_HI",
+     "bar": {"min": 0, "max": 14, "lo": 6.5, "hi": 8.5}},
+    {"type": "analog", "id": "LIT101", "x": 1270, "y": 330, "tag": "TK101_LEVEL", "label": "LIT-101  TK-101 level",
+     "units": "%", "w": 220, "bar": {"min": 0, "max": 100, "lo": 20, "hi": 85}},
+    {"type": "analog", "id": "LIT102", "x": 1270, "y": 410, "tag": "TK102_LEVEL", "label": "LIT-102  TK-102 level",
+     "units": "%", "w": 220, "bar": {"min": 0, "max": 100, "lo": 20, "hi": 85}},
+    {"type": "label", "id": "SpTitle", "x": 1270, "y": 500, "text": "SETPOINTS", "bold": true},
+    {"type": "setpoint", "id": "TK101HSP", "x": 1270, "y": 524, "tag": "TK101_LEVEL_HI_SP", "label": "TK-101 high level",
+     "units": "%", "w": 300},
+    {"type": "setpoint", "id": "TK101LSP", "x": 1270, "y": 552, "tag": "TK101_LEVEL_LO_SP", "label": "TK-101 low level",
+     "units": "%", "w": 300},
+    {"type": "setpoint", "id": "TK102HSP", "x": 1270, "y": 580, "tag": "TK102_LEVEL_HI_SP", "label": "TK-102 high level",
+     "units": "%", "w": 300},
+    {"type": "setpoint", "id": "TK102LSP", "x": 1270, "y": 608, "tag": "TK102_LEVEL_LO_SP", "label": "TK-102 low level",
+     "units": "%", "w": 300}
+  ]
+}

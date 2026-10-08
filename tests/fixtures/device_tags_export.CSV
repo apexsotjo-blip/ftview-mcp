@@ -1,0 +1,10 @@
+﻿;Tag Type, Tag Name, Tag Description, Read Only, Data Source, Security Code, Alarmed, Native Type, Value Type, Min Analog, Max Analog, Initial Analog, Scale, Offset, DeadBand, Units, Off Label Digital, On Label Digital, Initial Digital, Length String, Initial String, Retentive, Address, System Source Name, System Source Index, RIO Address, Element Size Block, Number Elements Block, Initial Block
+;###002 - THIS LINE CONTAINS VERSION INFORMATION. DO NOT REMOVE!!!
+
+;Folders Section (Must define folders before tags)
+"F","Process_Trends",,"F"
+
+;Tag Section
+"A","Process_Trends\EQ_Tank_Level",,"F","D","*","F","F","F",0,1,0,100,0,0,,,,,,,,"/::[Shortcut]Program:Equalization.EQ_Tank_Level"
+"A","Process_Trends\EQ_Inlet_Flow",,"F","D","*","F","F","F",0,1,0,100,0,0,,,,,,,,"/::[Shortcut]Program:Equalization.EQ_Inlet_Flow"
+"A","Process_Trends\EQ_Outlet_pH",,"F","D","*","F","F","F",0,1,0,100,0,0,,,,,,,,"/::[Shortcut]Program:Equalization.EQ_Outlet_pH"

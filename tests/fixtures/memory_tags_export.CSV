@@ -1,0 +1,10 @@
+﻿;Tag Type, Tag Name, Tag Description, Read Only, Data Source, Security Code, Alarmed, Native Type, Value Type, Min Analog, Max Analog, Initial Analog, Scale, Offset, DeadBand, Units, Off Label Digital, On Label Digital, Initial Digital, Length String, Initial String, Retentive, Address, System Source Name, System Source Index, RIO Address, Element Size Block, Number Elements Block, Initial Block
+;###002 - THIS LINE CONTAINS VERSION INFORMATION. DO NOT REMOVE!!!
+
+;Folders Section (Must define folders before tags)
+
+;Tag Section
+"D","X1","X1","F","M","*","F",,,,,,,,,,"Off","On","Off",,,1,
+"D","X2",,"F","M","*","F",,,,,,,,,,"Off","On","Off",,,1,
+"D","X3",,"F","M","*","F",,,,,,,,,,"Off","On","Off",,,0,
+"D","X4",,"F","M","*","F",,,,,,,,,,"Off","On","Off",,,0,
